@@ -24,14 +24,6 @@ Welcome to my Data Structures and Algorithms (DSA) repository! Here, I will docu
 
 - Revise and practice Thursday-Friday problems in **Java**, reinforcing concepts through repetition.
 
-**Sunday**
-
-- **Mock Tests:**
-  - Solve mock tests covering all problems tackled so far.
-  - Assess performance and identify weak areas for improvement.
-
----
-
 ## 💡 Goals
 
 1. **Concept Mastery:** Understand each topic thoroughly before moving to the next.
