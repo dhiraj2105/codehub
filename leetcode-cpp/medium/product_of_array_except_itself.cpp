@@ -3,24 +3,37 @@ using namespace std;
 
 vector<int> productExceptSelf(vector<int> &nums)
 {
+    // Get the size of the input array.
     int n = nums.size();
-    vector<int> product;
 
-    for (int i = 0; i < n; i++)
+    // Create a new array to store the products, initialized with 1's.
+    // This array will have the same size as the input array.
+    std::vector<int> product(n, 1);
+
+    // Calculate the prefix products.
+    // The prefix product at index i is the product of all numbers from index 0 to i-1.
+    for (int i = 1; i < n; i++)
     {
-        int left = 1;
-        int right = 1;
-        for (int j = 0; j < i; j++)
-        {
-            left = left * nums[j];
-        }
-        for (int j = i + 1; j < n; j++)
-        {
-            right = right * nums[j];
-        }
-        product.push_back(left * right);
+        // For each index i, calculate the prefix product by multiplying the previous prefix product with the number at index i-1.
+        product[i] = product[i - 1] * nums[i - 1];
     }
 
+    // Initialize a variable to store the suffix product.
+    // The suffix product starts from the last number in the array and moves towards the first number.
+    int right = 1;
+
+    // Calculate the suffix products and multiply with the prefix products.
+    // The suffix product at index i is the product of all numbers from index i+1 to the end of the array.
+    for (int i = n - 1; i >= 0; i--)
+    {
+        // For each index i, calculate the product by multiplying the prefix product with the suffix product.
+        product[i] = product[i] * right;
+
+        // Update the suffix product by multiplying it with the number at index i.
+        right = right * nums[i];
+    }
+
+    // Return the array of products.
     return product;
 }
 
