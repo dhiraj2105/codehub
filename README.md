@@ -34,6 +34,6 @@ Welcome to my Data Structures and Algorithms (DSA) repository! Here, I will docu
 
 ## 📚 Learning Resources
 
-- **Problem Platforms:** [LeetCode](https://leetcode.com), [GeeksforGeeks](https://www.geeksforgeeks.org)
+- **Problem Platforms:** [LeetCode](https://leetcode.com)
 
 Join me on this exciting journey as I tackle one problem at a time, growing stronger in DSA every day! 💻✨
