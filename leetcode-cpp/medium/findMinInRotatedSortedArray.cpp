@@ -43,7 +43,7 @@ int main()
 
     You must write an algorithm that runs in O(log n) time.
     */
-    vector<int> nums = {3, 4, 5, 1, 2};
+    vector<int> nums = {3, 4, 5, 11, 2};
 
     cout << findMin(nums) << endl;
     return 0;
