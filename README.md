@@ -32,7 +32,7 @@ Welcome to my Data Structures and Algorithms (DSA) repository! Here, I will docu
 
 ---
 
-## 📚 Learning Resources
+## 📚 Learning Resource
 
 - **Problem Platforms:** [LeetCode](https://leetcode.com)
 
