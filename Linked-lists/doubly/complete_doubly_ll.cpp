@@ -45,6 +45,24 @@ void printForward(NODE *node)
     cout << endl;
 }
 
+void printBackward(NODE *node)
+{
+    node = head;
+    while (node->next != NULL)
+    {
+        node = node->next;
+    }
+
+    cout << "Doubly Linked List Backward data : ";
+    while (node != NULL)
+    {
+        cout << node->data << " ";
+        node = node->prev;
+    }
+
+    cout << endl;
+}
+
 int main()
 {
     create(10);
@@ -52,6 +70,7 @@ int main()
     create(30);
 
     printForward(head);
+    printBackward(head);
 
     return 0;
 }
