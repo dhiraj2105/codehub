@@ -34,11 +34,24 @@ NODE *create(int value)
     return new_node;
 }
 
+void printForward(NODE *node)
+{
+    cout << "Doubly Linked List Forwarded data : ";
+    while (node != NULL)
+    {
+        cout << node->data << " ";
+        node = node->next;
+    }
+    cout << endl;
+}
+
 int main()
 {
     create(10);
     create(20);
     create(30);
+
+    printForward(head);
 
     return 0;
 }
