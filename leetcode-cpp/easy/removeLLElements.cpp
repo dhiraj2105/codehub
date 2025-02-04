@@ -34,24 +34,32 @@ ListNode *createLL(int value)
 
 ListNode *removeElements(ListNode *head, int val)
 {
+    // Create a dummy node to simplify handling edge cases like removing the head
     ListNode *dummy = new ListNode();
+
+    // Set the next pointer of the dummy node to point to the head of the list
     dummy->next = head;
 
+    // Initialize a pointer `current` to the dummy node
     ListNode *current = dummy;
 
+    // Iterate through the list as long as there is a next node
     while (current->next)
     {
-
+        // Check if the next node's value matches the value to be removed
         if (current->next->data == val)
         {
+            // Skip the next node by changing the current node's next pointer
             current->next = current->next->next;
         }
         else
         {
+            // Move the current pointer to the next node in the list
             current = current->next;
         }
     }
 
+    // Return the modified list starting from the node after the dummy node
     return dummy->next;
 }
 
