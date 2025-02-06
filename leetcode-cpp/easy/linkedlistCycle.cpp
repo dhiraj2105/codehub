@@ -64,17 +64,30 @@ void createCycle(ListNode *head, int pos)
 // Function to check if the linked list has a cycle using Floyd's Cycle Detection Algorithm (Tortoise and Hare)
 bool hasCycle(ListNode *head)
 {
-    unordered_map<int, int> addMap;
+    // // brute force method
+    // unordered_map<int, int> addMap;
+    // ListNode *current = head;
+    // while (current)
+    // {
+    //     if (addMap.find(current->val) != addMap.end())
+    //     {
+    //         return true;
+    //     }
+    //     addMap[current->val] = 1;
+    //     current = current->next;
+    // }
 
-    ListNode *current = head;
-    while (current)
+    // hare and tortoise algorithm
+    ListNode *tortoise = head;
+    ListNode *hare = head;
+    while (hare != NULL && tortoise != NULL && hare->next != NULL)
     {
-        if (addMap.find(current->val) != addMap.end())
+        tortoise = tortoise->next;
+        hare = hare->next->next;
+        if (hare == tortoise)
         {
             return true;
         }
-        addMap[current->val] = 1;
-        current = current->next;
     }
 
     return false;
