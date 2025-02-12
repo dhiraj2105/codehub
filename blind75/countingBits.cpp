@@ -3,17 +3,33 @@ using namespace std;
 
 vector<int> countingBits(int n)
 {
+    // Brute force
+    // vector<int> ans(n + 1, 0);
+    // for (int i = 0; i <= n; i++)
+    // {
+    //     int num = i;
+    //     int count = 0;
+    //     while (num)
+    //     {
+    //         count += num % 2;
+    //         num /= 2;
+    //     }
+    //     ans[i] = count;
+    // }
+    // return ans;
+
+    // Better method
     vector<int> ans(n + 1, 0);
     for (int i = 0; i <= n; i++)
     {
-        int num = i;
-        int count = 0;
-        while (num)
+        if (i % 2 == 0)
         {
-            count += num % 2;
-            num /= 2;
+            ans[i] = ans[i / 2];
         }
-        ans[i] = count;
+        else
+        {
+            ans[i] = ans[i / 2] + 1;
+        }
     }
     return ans;
 }
