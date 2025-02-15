@@ -58,6 +58,18 @@ public:
         }
         return arr[top];
     }
+    bool isEmpty()
+    {
+        return top == -1; // return true if stack is empty
+    }
+    bool isFull()
+    {
+        return top == capacity - 1; // return true if stack is full
+    }
+    int size()
+    {
+        return top + 1; // return current size of stack
+    }
 };
 
 int main()
@@ -69,6 +81,10 @@ int main()
     intStack.push(30);
     cout << "Top element is " << intStack.peek() << endl;
     cout << "Popped element is " << intStack.pop() << endl;
+
+    cout << intStack.isEmpty() << endl;
+    cout << intStack.isFull() << endl;
+    cout << intStack.size() << endl;
 
     // Stack for string
     Stack<string> strStack(3);
