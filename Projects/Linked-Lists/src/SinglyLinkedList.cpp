@@ -1,4 +1,5 @@
 #include "SinglyLinkedList.h"
+#include "Utility.h"
 
 // insert at start
 template <typename T>
@@ -7,6 +8,7 @@ void SinglyLinkedList<T>::insertAtStart(T value)
     NODE<T> *newNode = new NODE<T>(value);
     newNode->next = head;
     head = newNode;
+    Utility::printSuccess("Inserted at the start.");
 }
 
 // insert at end
@@ -27,6 +29,7 @@ void SinglyLinkedList<T>::insertAtEnd(T value)
         }
         current->next = newNode;
     }
+    Utility::printSuccess("Inserted at the end.");
 }
 
 // insert at a position
@@ -45,9 +48,13 @@ void SinglyLinkedList<T>::insertAtPosition(T value, int position)
         current = current->next;
     }
     if (!current)
+    {
+        Utility::printError("Position out of Bounds.");
         return;
+    }
     newNode->next = current->next;
     current->next = newNode;
+    Utility::printSuccess("Inserted at the specified position.");
 }
 
 // delete at start
@@ -55,10 +62,14 @@ template <typename T>
 void SinglyLinkedList<T>::deleteAtStart()
 {
     if (!head)
+    {
+        Utility::printError("List is empty.");
         return;
+    }
     NODE<T> *current = head;
     head = head->next;
     delete current;
+    Utility::printSuccess("Deleted at the start.");
 }
 
 // delete at end
@@ -66,11 +77,15 @@ template <typename T>
 void SinglyLinkedList<T>::deleteAtEnd()
 {
     if (!head)
+    {
+        Utility::printError("List is empty.");
         return;
+    }
     if (!head->next)
     {
         delete head;
         head = nullptr;
+        Utility::printSuccess("Deleted at the end.");
         return;
     }
     NODE<T> *current = head;
@@ -80,6 +95,7 @@ void SinglyLinkedList<T>::deleteAtEnd()
     }
     delete current->next;
     current->next = nullptr;
+    Utility::printSuccess("Deleted at the end.");
 }
 
 // delete at a position
@@ -97,10 +113,14 @@ void SinglyLinkedList<T>::deleteAtPosition(int position)
         current = current->next;
     }
     if (!current->next)
+    {
+        Utility::printError("Position out of Bounds.");
         return;
+    }
     NODE<T> *deleteNode = current->next;
     current->next = current->next->next;
     delete deleteNode;
+    Utility::printSuccess("Deleted at position " + std::to_string(position));
 }
 
 // display the linked list
@@ -108,6 +128,7 @@ template <typename T>
 void SinglyLinkedList<T>::display()
 {
     NODE<T> *current = head;
+    Utility::printInfo("List contents : ");
     while (current)
     {
         std::cout << current->data << " ";

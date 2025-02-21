@@ -4,6 +4,7 @@
 #include "SinglyLinkedList.h"
 #include "DoublyLinkedList.h"
 #include "CircularLinkedList.h"
+#include "Utility.h"
 #include <iostream>
 
 using namespace std;
@@ -36,7 +37,7 @@ private:
         int choice, value, position;
         do
         {
-            cout << "\n--- Operations Menu ---" << endl;
+            Utility::printInfo("\n--- Operations Menu ---");
             cout << "1. Insert at Start" << endl;
             cout << "2. Insert at Middle" << endl;
             cout << "3. Insert at End" << endl;
@@ -54,6 +55,7 @@ private:
                 cout << "Enter value to insert: ";
                 cin >> value;
                 list.insertAtStart(value);
+                Utility::printSuccess("Inserted at start successfully.");
                 break;
             case 2:
                 cout << "Enter value to insert: ";
@@ -61,31 +63,37 @@ private:
                 cout << "Enter position: ";
                 cin >> position;
                 list.insertAtPosition(value, position);
+                Utility::printSuccess("Inserted in middle successfully.");
                 break;
             case 3:
                 cout << "Enter value to insert: ";
                 cin >> value;
                 list.insertAtEnd(value);
+                Utility::printSuccess("Inserted at end successfully.");
                 break;
             case 4:
                 list.deleteAtStart();
+                Utility::printWarning("Deleted from start.");
                 break;
             case 5:
                 cout << "Enter position to delete: ";
                 cin >> position;
                 list.deleteAtPosition(position);
+                Utility::printWarning("Deleted from middle.");
                 break;
             case 6:
                 list.deleteAtEnd();
+                Utility::printWarning("Deleted from end.");
                 break;
             case 7:
+                Utility::printInfo("Displaying list:");
                 list.display();
                 break;
             case 8:
-                cout << "Returning to main menu." << endl;
+                Utility::printInfo("Returning to main menu.");
                 break;
             default:
-                cout << "Invalid choice. Try again." << endl;
+                Utility::printError("Invalid choice. Try again.");
             }
         } while (choice != 8);
     }
@@ -114,7 +122,7 @@ public:
         int choice;
         do
         {
-            cout << "\n===== Linked List Menu =====" << endl;
+            Utility::printInfo("\n===== Linked List Menu =====");
             cout << "1. Singly Linked List" << endl;
             cout << "2. Doubly Linked List" << endl;
             cout << "3. Circular Linked List" << endl;
@@ -134,10 +142,10 @@ public:
                 circularLinkedListMenu();
                 break;
             case 4:
-                cout << "Exiting the program." << endl;
+                Utility::printSuccess("Exiting the program.");
                 break;
             default:
-                cout << "Invalid choice. Try again." << endl;
+                Utility::printError("Invalid choice. Try again.");
             }
         } while (choice != 4);
     }
