@@ -11,7 +11,7 @@ public:
     T data;
     NODE<T> *next;
 
-    Node(t value)
+    NODE(T value)
     {
         data = value;
         next = nullptr;
