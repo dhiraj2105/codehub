@@ -221,7 +221,7 @@ public:
                 circularLinkedListMenu();
                 break;
             case 4:
-                Utility::printSuccess("\nThank you for using the program! -> " + ConsoleColor::BOLD_WHITE + "DHIRAJ KUMAR" + ConsoleColor::RESET);
+                Utility::printSuccess("\nThank you for using the program! -> " + ConsoleColor::BOLD_WHITE + "DHIRAJ KUMAR " + ConsoleColor::RESET + "https://github.com/dhiraj2105/codehub");
                 break;
             default:
                 Utility::printError("Invalid choice! Please select between 1-4.");
