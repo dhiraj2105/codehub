@@ -21,7 +21,7 @@ void SinglyLinkedList<T>::insertAtEnd(T value)
         head = newNode;
         return;
     }
-    Node<T> *current = head;
+    NODE<T> *current = head;
     while (current->next)
     {
         {
@@ -85,16 +85,15 @@ void SinglyLinkedList<T>::deleteAtEnd()
     {
         delete head;
         head = nullptr;
-        Utility::printSuccess("Deleted at the end.");
         return;
     }
-    NODE<T> *current = head;
-    while (current->next->next)
+    NODE<T> *temp = head;
+    while (temp->next->next)
     {
-        current = current->next;
+        temp = temp->next;
     }
-    delete current->next;
-    current->next = nullptr;
+    delete temp->next;
+    temp->next = nullptr;
     Utility::printSuccess("Deleted at the end.");
 }
 
@@ -132,7 +131,7 @@ void SinglyLinkedList<T>::display()
     while (current)
     {
         std::cout << current->data << " ";
-        current = current->next
+        current = current->next;
     }
     std::cout << "NULL" << endl;
 }

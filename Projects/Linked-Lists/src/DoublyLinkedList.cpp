@@ -43,8 +43,8 @@ void DoublyLinkedList<T>::insertAtPosition(T value, int position)
         insertAtStart(value);
         return;
     }
-    Node<T> *newNode = new Node<T>(value);
-    Node<T> *temp = head;
+    NODE<T> *newNode = new NODE<T>(value);
+    NODE<T> *temp = head;
     for (int i = 0; temp && i < position - 1; i++)
     {
         temp = temp->next;
@@ -66,7 +66,7 @@ void DoublyLinkedList<T>::deleteAtStart()
 {
     if (!head)
         return;
-    Node<T> *temp = head;
+    NODE<T> *temp = head;
     head = head->next;
     if (head)
         head->prev = nullptr;
@@ -81,7 +81,7 @@ void DoublyLinkedList<T>::deleteAtEnd()
 {
     if (!tail)
         return;
-    Node<T> *temp = tail;
+    NODE<T> *temp = tail;
     tail = tail->prev;
     if (tail)
         tail->next = nullptr;
@@ -99,7 +99,7 @@ void DoublyLinkedList<T>::deleteAtPosition(int position)
         deleteAtStart();
         return;
     }
-    Node<T> *temp = head;
+    NODE<T> *temp = head;
     for (int i = 0; temp && i < position; i++)
     {
         temp = temp->next;
@@ -121,7 +121,7 @@ void DoublyLinkedList<T>::deleteAtPosition(int position)
 template <typename T>
 void DoublyLinkedList<T>::displayForward()
 {
-    Node<T> *temp = head;
+    NODE<T> *temp = head;
     while (temp)
     {
         cout << temp->data << " <-> ";
@@ -134,7 +134,7 @@ void DoublyLinkedList<T>::displayForward()
 template <typename T>
 void DoublyLinkedList<T>::displayBackward()
 {
-    Node<T> *temp = tail;
+    NODE<T> *temp = tail;
     while (temp)
     {
         cout << temp->data << " <-> ";
