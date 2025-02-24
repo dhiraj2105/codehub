@@ -92,7 +92,7 @@ private:
                 cin >> value;
                 cout << "└─────────────────┘\n";
                 list.insertAtStart(value);
-                Utility::printSuccess("Value inserted at start successfully!");
+                Utility::printSuccess("Value inserted at start successfully 😁!");
                 break;
             case 2:
                 cout << "\n┌─ Insert at Middle ─┐\n";
@@ -110,11 +110,11 @@ private:
                 cin >> value;
                 cout << "└───────────────┘\n";
                 list.insertAtEnd(value);
-                Utility::printSuccess("Value inserted at end successfully!");
+                Utility::printSuccess("Value inserted at end hogyi!");
                 break;
             case 4:
                 list.deleteAtStart();
-                Utility::printWarning("First element deleted successfully!");
+                Utility::printWarning("First element deleted hogya!");
                 break;
             case 5:
                 cout << "\n┌─ Delete at Position ─┐\n";
