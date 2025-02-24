@@ -229,7 +229,7 @@ public:
                 cin.ignore();
                 cin.get();
             }
-        } while (choice != 4); // Continue until user chooses to exit
+        } while (choice != 4);
     }
 };
 
