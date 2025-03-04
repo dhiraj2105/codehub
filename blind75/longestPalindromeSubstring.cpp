@@ -27,7 +27,7 @@ string longestPalindrome(string str)
             high++;
 
             // Check if we've reached the boundaries of the string
-            if (low == 1 || high == str.length())
+            if (low == -1 || high == str.length())
                 break;
         }
 
