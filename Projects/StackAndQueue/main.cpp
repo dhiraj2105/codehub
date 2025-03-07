@@ -10,7 +10,7 @@ void mainMenu()
     int choice;
     do
     {
-        Utility::printInfo("\n===== Main Menu =====");
+        Utility::printInfo("===== Main Menu =====");
         cout
             << "1. Stack\n2. Queue\n3. Exit\nEnter choice: ";
         cin >> choice;
