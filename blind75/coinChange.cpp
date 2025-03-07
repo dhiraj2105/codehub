@@ -2,19 +2,18 @@
 using namespace std;
 int coinChange(vector<int> &coins, int amount)
 {
+    // Check edge case
     if (amount < 1)
-    {
         return 0;
-    }
 
-    // dp array
-    int minCoinsDP[amount + 1];
+    // Create DP array
+    vector<int> minCoinsDP(amount + 1, INT_MAX);
+
+    minCoinsDP[0] = 0; // Base case: 0 amount requires 0 coins
 
     for (int i = 1; i <= amount; i++)
     {
-        minCoinsDP[i] = INT_MAX;
-
-        // try each coin
+        // Try each coin
         for (int coin : coins)
         {
             if (coin <= i && minCoinsDP[i - coin] != INT_MAX)
@@ -23,6 +22,7 @@ int coinChange(vector<int> &coins, int amount)
             }
         }
     }
+
     return minCoinsDP[amount] == INT_MAX ? -1 : minCoinsDP[amount];
 }
 int main()
