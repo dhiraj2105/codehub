@@ -22,7 +22,6 @@ int numDecodings(string s)
 
     return dp[n];
 }
-}
 
 int main()
 {
