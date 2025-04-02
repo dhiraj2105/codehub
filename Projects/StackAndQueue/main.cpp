@@ -4,6 +4,7 @@ using namespace std;
 
 extern void stackMenu();
 extern void queueMenu();
+extern void dequeMenu();
 
 void mainMenu()
 {
@@ -20,7 +21,17 @@ void mainMenu()
             stackMenu();
             break;
         case 2:
-            queueMenu();
+            int qchoice;
+            cout << "Which queue you want to use ? \n 1. Normal queue \n 2. Double Ended queue ";
+            cin >> qchoice;
+            if (qchoice == 1)
+            {
+                queueMenu();
+            }
+            else if (qchoice == 2)
+            {
+                dequeMenu();
+            }
             break;
         case 3:
             Utility::printSuccess("\nThank you for using the program! -> " + ConsoleColor::BOLD_WHITE + "DHIRAJ KUMAR " + ConsoleColor::RESET + "https://github.com/dhiraj2105/codehub");
