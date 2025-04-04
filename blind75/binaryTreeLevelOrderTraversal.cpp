@@ -37,7 +37,7 @@ vector<vector<int>> levelOrder(TreeNode *root)
         // process all nodes at current level
         for (int i = 0; i < levelSize; i++)
         {
-            TreeNode *node = q.front(); // Get the node at front of queue
+            auto node = q.front(); // Get the node at front of queue
             q.pop();
             levelNodes.push_back(node->val); // add node value to levelNodes
 
