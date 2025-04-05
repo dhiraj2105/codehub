@@ -1,0 +1,25 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
+    },
+    
+    "editor.fontFamily": "JetBrains Mono",
+    
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "comment.block",
+                    "comment.line",
+                    "comment.block.documentation",
+                ],
+                "settings": {
+                    "fontStyle": "italic",
+                    "foreground":"#77926d"
+                }
+            }
+        ]
+    }
+}
