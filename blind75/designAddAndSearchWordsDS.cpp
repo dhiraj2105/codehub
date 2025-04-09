@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class WordDictonary
+class WordDictionary
 {
 private:
     struct TrieNode
@@ -18,70 +18,75 @@ private:
 
     TrieNode *root;
 
+    // Helper function to perform a recursive search, used to handle '.'
+    bool searchHelper(string word, int index, TrieNode *node)
+    {
+        if (index == word.size())
+        {
+            return node->isEndOfWord; // Return true if we are at the end of the word
+        }
+
+        char ch = word[index];
+
+        if (ch == '.')
+        {
+            // If the current character is a dot, check all possible children
+            for (TrieNode *child : node->children)
+            {
+                if (child != nullptr && searchHelper(word, index + 1, child))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        else
+        {
+            int idx = ch - 'a'; // Convert character to index (e.g., 'a' -> 0, 'b' -> 1)
+            if (node->children[idx] != nullptr)
+            {
+                return searchHelper(word, index + 1, node->children[idx]);
+            }
+            else
+            {
+                return false; // If the character doesn't exist, return false
+            }
+        }
+    }
+
 public:
-    WordDictonary()
+    WordDictionary()
     {
         root = new TrieNode();
     }
 
     void addWord(string word)
     {
-        TrieNode *current = root; // Start from the root node
+        TrieNode *current = root;
 
-        // Loop through every character of the word
         for (char ch : word)
         {
-            int index = ch - 'a'; // Convert char to index (e.g., 'c' - 'a' = 2)
+            int index = ch - 'a';
 
-            // If the current character's node doesn't exist, create it
             if (current->children[index] == nullptr)
             {
-                current->children[index] = new TrieNode(); // Make a new node
+                current->children[index] = new TrieNode();
             }
 
-            // Move to the child node for next character
             current = current->children[index];
         }
 
-        // After inserting all characters, mark the end node as "end of word"
-        current->isEndOfWord = true;
+        current->isEndOfWord = true; // Mark the end of the word
     }
 
     bool search(string word)
     {
-        TrieNode *current = root; // Start at root
-
-        for (char ch : word)
-        {
-            int index = ch - 'a'; // Get index for this character
-
-            // If node for this character doesn't exist, word doesn't exist
-            if (current->children[index] == nullptr)
-            {
-                return false;
-            }
-
-            // Move to next character node
-            current = current->children[index];
-        }
-
-        // Word is present only if current node is marked as end of a word
-        return current->isEndOfWord;
+        return searchHelper(word, 0, root); // Start the recursive search from the root
     }
 };
 
 int main()
 {
-    /*
-    Design a data structure that supports adding new words and finding if a string matches any previously added string.
-
-    Implement the WordDictionary class:
-
-    WordDictionary() Initializes the object.
-    void addWord(word) Adds word to the data structure, it can be matched later.
-    bool search(word) Returns true if there is any string in the data structure that matches word or false otherwise. word may contain dots '.' where dots can be matched with any letter.
-    */
-
     WordDictionary *obj = new WordDictionary();
 
     obj->addWord("bad");
@@ -93,5 +98,5 @@ int main()
     cout << obj->search(".ad") << endl; // Should return 1 (true)
     cout << obj->search("b..") << endl; // Should return 1 (true)
 
-      return 0;
+    return 0;
 }
