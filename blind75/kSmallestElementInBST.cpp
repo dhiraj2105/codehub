@@ -25,27 +25,37 @@ TreeNode *insert(TreeNode *root, int val)
     return root;
 }
 
+// Find kth smallest element in a BST using iterative inorder traversal
 int KthSmallest(TreeNode *root, int k)
 {
-    // find using inorder traversal
-    stack<TreeNode *> myStack;
-    TreeNode *current = root;
+    // Stack to simulate recursion for inorder traversal
+    stack<TreeNode *> st;
 
-    while (current || !myStack.empty())
+    TreeNode *curr = root;
+
+    // Loop until we've traversed all nodes
+    while (curr || !st.empty())
     {
-        while (current)
+        // Go as left as possible (smallest values in BST are on the left)
+        while (curr)
         {
-            myStack.push(current);
-            current = current->left;
+            st.push(curr);     // Save current node to come back to it later
+            curr = curr->left; // Move to left child
         }
-        current = myStack.top();
-        myStack.pop();
+
+        // Process node at the top of the stack
+        curr = st.top();
+        st.pop(); // Visit the leftmost unvisited node
+
+        // Decrement k since we're visiting one more node in sorted order
         if (--k == 0)
-        {
-            return current->val;
-        }
-        current = current->right;
+            return curr->val; // If k reaches 0, we've found the kth smallest
+
+        // Move to right subtree (larger values)
+        curr = curr->right;
     }
+
+    // If k is larger than the number of nodes in the BST
     return -1;
 }
 
