@@ -1,5 +1,4 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 // Definition for a binary tree node.
@@ -55,8 +54,25 @@ TreeNode *insert(TreeNode *root, int key)
     return root;
 }
 
+int maxSum = INT_MIN;
+
+int solver(TreeNode *root)
+{
+    if (!root)
+        return 0;
+
+    int left = max(0, solver(root->left));
+    int right = max(0, solver(root->right));
+
+    maxSum = max(maxSum, root->val + left + right);
+
+    return root->val + max(left, right);
+}
+
 int maxPathSum(TreeNode *root)
 {
+    solver(root);
+    return maxSum;
 }
 
 int main()
