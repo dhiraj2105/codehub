@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/Projects/Linked-Lists/include"
+                "${workspaceFolder}/Projects/Linked-Lists/include",
+                "${workspaceFolder}/Projects/Auto-Complete-Suggestion-System/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
