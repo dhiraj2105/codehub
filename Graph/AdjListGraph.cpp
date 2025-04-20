@@ -28,9 +28,49 @@ public:
             cout << "Invalid vertices" << endl;
         }
     }
+
+    // display adjacency matrix
+    void display()
+    {
+
+        cout << "\nAdjacency Matrix:\n   ";
+        for (int i = 0; i < vertices; ++i)
+            cout << i << " ";
+        cout << "\n";
+
+        for (int i = 0; i < vertices; ++i)
+        {
+            cout << i << ": ";
+            for (int j = 0; j < vertices; ++j)
+            {
+                cout << adjMatrix[i][j] << " ";
+            }
+            cout << "\n";
+        }
+    }
 };
 
 int main()
 {
+    int V;
+    cout << "Enter the number of vertices: ";
+    cin >> V;
+
+    Graph g(V);
+
+    int edges;
+    cout << "Enter the number of edges: ";
+    cin >> edges;
+
+    cout << "Enter " << edges << " edges (u v) : " << endl;
+    for (int i = 0; i < edges; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        g.addEdge(u, v);
+    }
+
+    g.display();
+
     return 0;
 }
