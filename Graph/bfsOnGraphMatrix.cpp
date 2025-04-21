@@ -48,6 +48,41 @@ public:
             cout << "\n";
         }
     }
+
+    // performs Breadth-First Search (BFS) starting from a given vertex
+    void bfs(int start)
+    {
+        // step 1: create visited array initialised to false
+        vector<bool> visited(vertices, false);
+        // step 2: create a queue for BFS
+        queue<int> q;
+        // step 3: push starting node and mark as visited
+        q.push(start);
+        visited[start] = true;
+
+        cout << "\n BFS Traversal starting from node " << start << endl;
+
+        // step 4: Traverse the queue
+        while (!q.empty())
+        {
+            int current = q.front();
+            q.pop();
+
+            cout << current << " ";
+
+            // explore all its neighbors
+            for (int i = 0; i < vertices; i++)
+            {
+                // if there's an edge and its it not visited
+                if (adjMatrix[current][i] == 1 && !visited[i])
+                {
+                    q.push(i);
+                    visited[i] = true;
+                }
+            }
+        }
+        cout << endl;
+    }
 };
 
 int main()
@@ -71,6 +106,13 @@ int main()
     }
 
     g.display();
+
+    // BFS
+    int startNode;
+    cout << "Enter the start node: ";
+    cin >> startNode;
+
+    g.bfs(startNode);
 
     return 0;
 }
