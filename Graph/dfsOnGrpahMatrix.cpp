@@ -76,6 +76,9 @@ public:
     void dfs(int start)
     {
         vector<bool> visited(vertices, false);
+
+        cout << "\n DFS Traversal starting from node " << start << endl;
+
         dfsUtil(start, visited);
         cout << endl;
     }
