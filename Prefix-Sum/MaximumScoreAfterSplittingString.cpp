@@ -39,6 +39,46 @@ int maxScore_BruteForce(string s)
     return maxScore;
 }
 
+//  Optimized method : Only scan string once
+int maxScore(string s)
+{
+    int totalOnes = 0; // total number of 1 in whole string
+    int leftZeros = 0; // zeros seen so far in left part
+    int maxScore = 0;  // max score found so far
+
+    // first count all 1 in string
+    for (char c : s)
+    {
+        if (c == '1')
+        {
+            totalOnes++;
+        }
+    }
+
+    int rightOnes = totalOnes;
+
+    // Traverse string and calcualte score at each split
+    for (int i = 0; i < s.length() - 1; i++)
+    {
+        if (s[i] == '0')
+        {
+            leftZeros++; // if 0 then increase leftZeros count
+        }
+        else
+        {
+            rightOnes--; // if 1 then it moves from right to left
+        }
+
+        // Score
+        int score = leftZeros + rightOnes;
+
+        // update max score
+        maxScore = max(maxScore, score);
+    }
+
+    return maxScore;
+}
+
 int main()
 {
     /*
@@ -48,7 +88,9 @@ int main()
     */
     string s = "011101";
 
-    cout << "Max Score : " << maxScore_BruteForce(s);
+    cout << "Max Score by Brute Force Method : " << maxScore_BruteForce(s) << endl;
+
+    cout << "Max Score by optimized method : " << maxScore(s);
 
     return 0;
 }
