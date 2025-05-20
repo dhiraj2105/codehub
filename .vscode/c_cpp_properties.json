@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Projects/Linked-Lists/include",
-                "${workspaceFolder}/Projects/Auto-Complete-Suggestion-System/"
+                "${workspaceFolder}/Projects/Auto-Complete-Suggestion-System/",
+                "${workspaceFolder}/Projects/Calculator-Undo-Redo-History/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
