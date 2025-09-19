@@ -1,4 +1,4 @@
-package swe130challenge.day4;
+package swe130challenge.day3;
 
 public class strings {
 
