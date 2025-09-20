@@ -1,6 +1,5 @@
-package swe130challenge.day4;
-
 public class StringBuilderVSBuffer {
+
     public static void main(String[] args) {
         // Explained difference between string ,stringbuilder and stringbuffer
 
@@ -45,7 +44,9 @@ public class StringBuilderVSBuffer {
             e.printStackTrace();
         }
 
-        System.out.println("Final length of thread safe StringBuffer: " + sb1.length());
+        System.out.println(
+            "Final length of thread safe StringBuffer: " + sb1.length()
+        );
         // Above code will always print 20000 as StringBuffer is thread-safe
         // If we use StringBuilder instead of StringBuffer above code may print less
         // than 20000 as StringBuilder is not thread-safe
@@ -53,6 +54,7 @@ public class StringBuilderVSBuffer {
 }
 
 class Task extends Thread {
+
     private StringBuffer sb;
 
     public Task(StringBuffer sb) {

@@ -1,6 +1,5 @@
-package swe130challenge.day4;
-
 public class PerformanceDiff {
+
     public static void main(String[] args) {
         // start and end time
         long startTime, endTime;
@@ -12,7 +11,9 @@ public class PerformanceDiff {
             str += " Kumar";
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Time taken using String: " + (endTime - startTime) + "ms");
+        System.out.println(
+            "Time taken using String: " + (endTime - startTime) + "ms"
+        );
 
         // Using StringBuilder
         startTime = System.currentTimeMillis();
@@ -21,7 +22,9 @@ public class PerformanceDiff {
             stringBuilder.append(" Kumar");
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Time taken using StringBuilder: " + (endTime - startTime) + "ms");
+        System.out.println(
+            "Time taken using StringBuilder: " + (endTime - startTime) + "ms"
+        );
 
         // Using StringBuffer
         startTime = System.currentTimeMillis();
@@ -30,6 +33,8 @@ public class PerformanceDiff {
             stringBuffer.append(" Kumar");
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Time taken using StringBuffer: " + (endTime - startTime) + "ms");
+        System.out.println(
+            "Time taken using StringBuffer: " + (endTime - startTime) + "ms"
+        );
     }
 }
