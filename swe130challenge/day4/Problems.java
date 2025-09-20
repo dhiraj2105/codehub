@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 class MyString {
 
@@ -41,6 +43,64 @@ class MyString {
             System.out.println("Strings are not anagram");
         }
     }
+
+    void vowelAndConsonants(String str) {
+        int vowelCount = 0;
+        int consonantCount = 0;
+
+        str = str.toLowerCase();
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z') { // check if character is an alphabet
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowelCount++;
+                } else {
+                    consonantCount++;
+                }
+            }
+        }
+
+        System.out.println("Number of vowels: " + vowelCount);
+        System.out.println("Number of consonants: " + consonantCount);
+    }
+
+    void removeDuplicates(String str) {
+        // creates a set to keep track of characters we have already seen
+        Set<Character> seen = new HashSet<>();
+
+        // create a new result string
+        // we will use stringbuilder, coz strings are not mutable and stringbuilders are
+        StringBuilder res = new StringBuilder();
+
+        // convert input string to char array
+        char[] arr = str.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            // if char is not already in set
+            if (!seen.contains(arr[i])) {
+                seen.add(arr[i]);
+                res.append(arr[i]);
+            }
+        }
+
+        System.out.println("Strinng after removing duplicates : " + res.toString());
+    }
+
+    void reverseWords(String str) {
+        String[] wordsArr = str.split("\\s+");
+
+        StringBuilder res = new StringBuilder();
+
+        for (int i = wordsArr.length - 1; i >= 0; i--) {
+            res.append(wordsArr[i]);
+            // add space between words but not after last word
+            if (i != 0) {
+                res.append(" ");
+            }
+        }
+        System.out.println("Reversed words: " + res.toString());
+    }
 }
 
 public class Problems {
@@ -48,10 +108,14 @@ public class Problems {
     public static void main(String[] args) {
         String str1 = "madam";
         String str2 = "adamm";
+        String str = "This is a String";
 
         MyString myStr = new MyString();
 
         myStr.palindromeCheck(str1);
         myStr.anagramCheck(str1, str2);
+        myStr.vowelAndConsonants(str1);
+        myStr.removeDuplicates(str1);
+        myStr.reverseWords(str);
     }
 }
