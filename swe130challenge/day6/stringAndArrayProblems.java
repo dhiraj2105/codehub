@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 class ArrayProblems {
 
     int maxElement(int[] nums) {
@@ -11,6 +13,7 @@ class ArrayProblems {
     }
 
     int[] findSubArrayWithSum(int[] arr, int target) {
+        // sliding window
         int start = 0;
         int currentSum = 0;
 
@@ -28,6 +31,30 @@ class ArrayProblems {
         }
 
         return new int[] { -1, -1 }; // Not found
+    }
+
+    int findMaxLength(int[] nums) {
+        // Convert 0s to -1s to use prefix sum
+        HashMap<Integer, Integer> sumIndexMap = new HashMap<>();
+        int maxLength = 0;
+        int sum = 0;
+
+        // store initial sum 0 at index -1
+        for (int i = 0; i < nums.length; i++) {
+            // Replace 0 with -1
+            sum += (nums[i] == 0) ? -1 : 1;
+
+            // If the sum has been seen before, a subarray with sum 0 exists
+            if (sumIndexMap.containsKey(sum)) {
+                int prevIndex = sumIndexMap.get(sum);
+                int length = i - prevIndex;
+                maxLength = Math.max(maxLength, length);
+            } else {
+                // store the first occurence of sum
+                sumIndexMap.put(sum, i);
+            }
+        }
+        return maxLength;
     }
 }
 
@@ -84,9 +111,8 @@ public class stringAndArrayProblems {
     public static void main(String[] args) {
         ArrayProblems ap = new ArrayProblems();
 
-        int[] nums = { 2, 1, 3, 5, 4 }; // original array (NOT sorted)
-
         // ✅ Find max element
+        int[] nums = { 2, 1, 3, 5, 4 }; // original array (NOT sorted)
         System.out.println("The max element in array: " + ap.maxElement(nums));
 
         // ✅ Find subarray with given sum
@@ -101,5 +127,11 @@ public class stringAndArrayProblems {
         } else {
             System.out.println("Subarray with sum not found");
         }
+
+        // ✅ Find maxlength
+        int[] binaryArray = { 0, 1, 0, 1, 1, 1, 0 };
+        System.out.println(
+            "Longest subarray length : " + ap.findMaxLength(binaryArray)
+        );
     }
 }
