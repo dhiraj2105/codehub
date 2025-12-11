@@ -30,19 +30,32 @@ class SuffixArray {
 
 class Problems {
     int rangeSum(int[] prefix, int l, int r) {
-        return 0;
+        if (l == 0) {
+            return prefix[r];
+        }
+        return prefix[r] - prefix[l - 1];
     }
 
     int pivotIndex(int[] nums) {
-        return 0;
-    }
 
-    int[] leftProduct(int[] nums) {
-        return nums;
-    }
+        int leftSum = 0;
+        int rightSum = 0;
+        int val;
 
-    int[] rightProduct(int[] nums) {
-        return nums;
+        for (int num : nums) {
+            rightSum += num;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            val = nums[i];
+            rightSum = rightSum - val;
+            if (leftSum == rightSum) {
+                return i;
+            }
+            leftSum = leftSum + val;
+        }
+
+        return -1;
     }
 }
 
@@ -57,11 +70,19 @@ public class PrefixSuffixAndProblems {
     }
 
     public static void main(String[] args) {
-        int[] nums = { 1, 2, 3, 4, 5 };
+        // int[] nums = { 1, 2, 3, 4, 5 };
+        int[] nums = { 1, 7, 3, 6, 5, 6 };
 
         // prefix sum array
         printArr("Prefix Sum Array Result :", PrefixArray.prefixArray(nums));
         // suffix sum array
         printArr("Suffix Sum Array Result :", SuffixArray.suffixArray(nums));
+
+        // Problems
+        Problems p = new Problems();
+        System.out.println("The range Sum : " +
+                p.rangeSum(PrefixArray.prefixArray(nums), 1, 4));
+
+        System.out.println("The pivot Index of given array is : " + p.pivotIndex(nums));
     }
 }
