@@ -56,6 +56,38 @@ class SortingAlgorithms {
 
 }
 
+class problems {
+    int[] reverseArray(int[] nums) {
+        // we can use two pointers: i,j
+        // i will be at 0th index and j will be at last index and both will come closer
+        // at iteration, swap i and j
+        int i = 0;
+        int j = nums.length - 1;
+
+        while (i < j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+
+        return nums;
+    }
+
+    int findMaxElement(int nums[]) {
+        int maxElement = nums[0];
+
+        for (int i = 0; i < nums.length; i++) {
+            if (maxElement < nums[i]) {
+                maxElement = nums[i];
+            }
+        }
+
+        return maxElement;
+    }
+}
+
 public class simpleProblems {
     // print array
     static void printArray(int[] nums) {
@@ -79,5 +111,12 @@ public class simpleProblems {
         // Sorting Algorithm
         System.out.print("Array Sorted using bubble sort : ");
         printArray(SortingAlgorithms.bubbleSort(nums));
+
+        // problems
+        problems p = new problems();
+
+        System.out.print("Reversed Array : ");
+        printArray(p.reverseArray(nums));
+        System.out.println("The maximum element in the array is : " + p.findMaxElement(nums));
     }
 }
