@@ -1,5 +1,19 @@
 public class sorting {
 
+    static void bubbleSort(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] > nums[j]) {
+                    int temp = nums[j];
+                    nums[j] = nums[i];
+                    nums[i] = temp;
+                }
+            }
+        }
+
+        print("Bubble Sort", nums);
+    }
+
     static void selectionSort(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             int min = i;
@@ -27,6 +41,6 @@ public class sorting {
     public static void main(String[] args) {
         int[] nums = { 2, 1, 5, 3, 4 };
 
-        selectionSort(nums);
+        bubbleSort(nums);
     }
 }
