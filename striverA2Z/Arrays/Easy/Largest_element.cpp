@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,6 +15,13 @@ int bruteForce(int nums[], int size) {
   return maxElement;
 }
 
+int bruteForce2(int nums[], int size) {
+  // sort in ascending order and return last element
+  // SORTING
+  sort(nums, nums + size);
+  return nums[size-1];
+}
+
 int best(int nums[], int size) { return 0; }
 
 int main() {
@@ -22,5 +30,6 @@ int main() {
   int size = sizeof(arr) / sizeof(arr[0]);
 
   cout << "Largest Element from the array : " << bruteForce(arr, size) << endl;
+  cout << "Largest Element from the array : " << bruteForce2(arr, size) << endl;
   cout << "Largest Element from the array : " << best(arr, size) << endl;
 }
