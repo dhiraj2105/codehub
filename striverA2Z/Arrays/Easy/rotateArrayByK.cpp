@@ -68,18 +68,64 @@ void bruteForce(int nums[], int size, string choice, int k)
     }
 }
 
+/**
+ * reverse the array
+ * @param nums[] array
+ * @param start left index
+ * @param end right index
+ */
+void reverse(int nums[], int start, int end)
+{
+    while (start < end)
+    {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+
+        start++;
+        end--;
+    }
+}
+
+/**
+ * optimal solution
+ * @param nums[] array
+ * @param size size of the array
+ * @param choice direction
+ * @param k k elements to rotate
+ */
+void optimal(int nums[], int size, string choice, int k)
+{
+    if (choice == "left")
+    {
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, size - 1);
+        reverse(nums, 0, size - 1);
+
+        print("Reversed array", nums, size);
+    }
+    else
+    {
+        reverse(nums, 0, size - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, size - 1);
+
+        print("Reversed array", nums, size);
+    }
+}
+
 int main()
 {
     // Given an integer array nums, rotate the array to the left or right by k elements.
 
     int nums[] = {1, 2, 3, 4, 5};
     int size = sizeof(nums) / sizeof(nums[0]);
-    string choice = "left";
+    string choice = "right";
     int k = 3;
 
     print("Original array", nums, size);
 
-    bruteForce(nums, size, choice, k);
+    optimal(nums, size, choice, k);
 
     return 0;
 }
