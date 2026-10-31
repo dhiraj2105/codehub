@@ -48,6 +48,19 @@ struct Process
 
 /**
  * Data Structure to represent Execution Interval
+ *
+ * One ExecutionInterval records one continuous period on the CPU timeline.
+ *
+ * Example:
+ *     {"P1", 0, 2}
+ *
+ * Means:
+ *     Process P1 occupied the CPU from time 0 up to (but not including) time 2.
+ *
+ * We store intervals so that we can print a Gantt chart after scheduling.
+ *
+ * The special process ID "IDLE" means that no process was ready and the CPU
+ * had nothing to execute during that interval.
  */
 struct ExecutionInterval
 {
